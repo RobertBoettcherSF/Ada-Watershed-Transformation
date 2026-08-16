@@ -1,7 +1,7 @@
 package body Watershed_Algorithm is
 
    type Point is record
-      R, C : Positive;
+      R, C : Integer; -- Changed from Positive to Integer to prevent Constraint_Error on edge neighbors
    end record;
    
    type Offset is record
@@ -115,7 +115,6 @@ package body Watershed_Algorithm is
    ) is
       Current_Label : Label_Type := 0;
       Next_Label    : Label_Type;
-      Min_Found     : Boolean;
       N_Pt          : Point;
    begin
       if Image'Length(1) /= Result'Length(1) or Image'Length(2) /= Result'Length(2) then
